@@ -86,21 +86,7 @@ function serialize(xs: any): string | null {
     .join("");
 }
 
-function sanitizeTarget(id: string) {
-  return id.replace(/[^0-9]/g, "");
-}
-
-function formatTarget(id: string) {
-  const numbers = sanitizeTarget(id);
-  if (numbers.length >= 13) return numbers;
-  return ("0000000000000" + numbers.replace(/^0/, "66")).slice(-13);
-}
-
-function formatAmount(amount: number) {
-  return amount.toFixed(2);
-}
-
-function formatCrc(crcValue: number) {
+function formatCrc(crcValue: any) {
   return ("0000" + crcValue.toString(16).toUpperCase()).slice(-4);
 }
 

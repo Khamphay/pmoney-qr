@@ -1,4 +1,3 @@
-import { string } from 'yargs';
 import {genQRCode} from '../src/source'
 
 test('Generate QR Code', () => {

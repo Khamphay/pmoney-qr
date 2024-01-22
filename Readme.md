@@ -27,7 +27,7 @@ const result = genQRCode("<target_code>", {
 console.log(result);
 ```
 
-- There agrs: `<target_code>` and `<mcc_code>` are typ you can get it from pmoney merchant webhook after [register](htts://app.pmoney.com) completed.
+- There agrs: `<target_code>` and `<mcc_code>` are typ you can get it from pmoney merchant webhook after [register](https://app.pmoney.com) completed.
 - `billId` is the bill use to reference this transaction, generate by user.
 - `amount` is amount of you want to transfer.
 - `expired` is the time of QR expired. If set for expire in 10 minutes `expired: "10m"` or two hours `expired: "2h"`
