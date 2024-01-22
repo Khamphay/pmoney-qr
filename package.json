@@ -1,6 +1,6 @@
 {
   "name": "pmoney-qr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Pmoney-QR is the generate pmoney pyament qr code",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,7 +15,9 @@
   "author": "Kham",
   "license": "ISC",
   "dependencies": {
-    "crc": "^4.3.2"
+    "@types/jsonwebtoken": "^9.0.5",
+    "crc": "^4.3.2",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@types/jest": "^29.5.11",

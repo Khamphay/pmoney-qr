@@ -1,16 +1,9 @@
 import { crc16xmodem } from "crc";
-
-type Optoins = {
-  mccCode: string;
-  billId: string;
-  amount: number;
-  expired: string;
-};
-
+import { Playload } from "./model";
 /**
  *
  * @param targetCode Your can get the taget code from pmoney merchant webhook
- * @param options Include:
+ * @param payload Include:
  *  { @mccCode Get the mccCode from pmoney merchant webhook
  *    @billId Is bill id of this QR or Transaction generate by user
  *    @amount Is amount of transfer
@@ -34,14 +27,14 @@ type Optoins = {
  * ```
  */
 
-function genQRCode(targetCode: string, options: Optoins): string | null {
+function genQRCode(targetCode: string, payload: Playload): string | null {
   try {
-    const amount = options.amount ? options.amount.toString() : null;
+    const amount = payload.amount ? payload.amount.toString() : null;
     let qr_expired: string = "";
     const now = new Date();
-    const leg = options.expired.length;
-    const exp = parseInt(options.expired.substring(leg - 1));
-    const unit = options.expired.substring(leg - 1, leg).toLowerCase();
+    const leg = payload.expired.length;
+    const exp = parseInt(payload.expired.substring(leg - 1));
+    const unit = payload.expired.substring(leg - 1, leg).toLowerCase();
     if (unit === "h") {
       qr_expired = now.setHours(now.getHours() + exp).toString();
     } else if (unit === "m") {
@@ -49,7 +42,7 @@ function genQRCode(targetCode: string, options: Optoins): string | null {
     } else {
       throw new Error("Expired must include only `h` or `m`.");
     }
-    const billId = options.billId;
+    const billId = payload.billId;
     const aid = "A005266284662577";
     const iin = "12345678";
 
@@ -66,7 +59,7 @@ function genQRCode(targetCode: string, options: Optoins): string | null {
           qr_expired && f("04", qr_expired),
         ])
       ),
-      options.mccCode && f("52", options.mccCode),
+      payload.mccCode && f("52", payload.mccCode),
       f("53", "418"),
       amount && f("54", amount),
       billId && f("62", serialize([f("01", billId)])),
