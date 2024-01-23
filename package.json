@@ -15,9 +15,7 @@
   "author": "Kham",
   "license": "ISC",
   "dependencies": {
-    "@types/jsonwebtoken": "^9.0.5",
-    "crc": "^4.3.2",
-    "jsonwebtoken": "^9.0.2"
+    "crc": "^4.3.2"
   },
   "devDependencies": {
     "@swc/core": "^1.3.105",
