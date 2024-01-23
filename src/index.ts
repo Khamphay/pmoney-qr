@@ -1,4 +1,4 @@
 import { genQRCode } from "./source";
-import { verifyPayload } from "./check-source";
+// import { verifyPayload } from "./check-source";
 
-export { genQRCode, verifyPayload };
+export { genQRCode };
