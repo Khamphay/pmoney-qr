@@ -33,7 +33,7 @@ function genQRCode(targetCode: string, payload: Playload): string | null {
     let qr_expired: string = "";
     const now = new Date();
     const leg = payload.expired.length;
-    const exp = parseInt(payload.expired.substring(leg - 1));
+    const exp = parseInt(payload.expired.substring(0,leg - 1));
     const unit = payload.expired.substring(leg - 1, leg).toLowerCase();
     if (unit === "h") {
       qr_expired = now.setHours(now.getHours() + exp).toString();
